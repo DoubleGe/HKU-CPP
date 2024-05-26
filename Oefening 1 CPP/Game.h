@@ -4,6 +4,7 @@
 #include <list>
 #include "Shape.h"
 #include "GameObject.h"
+#include "Text.h";
 
 class Game
 {
@@ -14,6 +15,8 @@ private:
 
 	std::list<Shape*> objectsToDraw;
 	std::list<GameObject*> gameObjects;
+
+	Text fpsText;
 
 	float fps = 0;
 public:
