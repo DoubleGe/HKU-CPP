@@ -11,7 +11,7 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(700, 700), "Shape Drawer!");
 
 	Game game(window);
-
+	window.setFramerateLimit(275);
 
 	while (window.isOpen())
 	{

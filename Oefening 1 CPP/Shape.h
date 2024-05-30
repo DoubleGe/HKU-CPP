@@ -11,7 +11,7 @@ public:
 	virtual void SetPosition(float xPos, float yPos);
 	virtual void SetPosition(Vector2 position);
 
-	virtual void Draw(sf::RenderWindow& window);
+	virtual void Draw(sf::RenderWindow& window) = 0;
 	virtual void SetColor(sf::Color color);
 	virtual float CalcArea();
 

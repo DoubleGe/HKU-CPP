@@ -10,11 +10,6 @@ void Shape::SetPosition(Vector2 position)
 {
 }
 
-void Shape::Draw(sf::RenderWindow& window)
-{
-
-}
-
 void Shape::SetColor(sf::Color color)
 {
 	this->color = color;

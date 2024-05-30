@@ -9,7 +9,7 @@ void Player::Update()
 		position.y += 100 * game.deltaTime;
 	}
 
-	
+	playerShape->SetSize(playerShape->GetSize() + Vector2(1, 1) * game.deltaTime);
 
 	playerShape->SetPosition(position);
 }
@@ -23,7 +23,7 @@ Player::Player(Vector2 position, Game& game) : game(game)
 {
 	this->position = position;
 	
-	playerShape = new Rectangle(position.x, position.y, sf::Color(255, 0, 0, 255), Vector2(10, 10));
+	playerShape = new SR::Rectangle(position.x, position.y, sf::Color(255, 0, 0, 255), Vector2(10, 10));
 }
 
 Player::~Player()

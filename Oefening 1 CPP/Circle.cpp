@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Circle.h"
 #include <SFML/Graphics.hpp>
+#include <cmath>
 
 
 void Circle::Draw(sf::RenderWindow& window)

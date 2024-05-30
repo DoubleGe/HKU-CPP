@@ -29,9 +29,9 @@ float Vector2::NormalizedDotProduct(Vector2 vec)
 	return norm.x * newNorm.x + norm.y * newNorm.y;
 }
 
-sf::Vector2<float> Vector2::ConvertToSFML()
+sf::Vector2f Vector2::ConvertToSFML()
 {
-	return sf::Vector2<float>(x, y);
+	return sf::Vector2f(x, y);
 }
 
 

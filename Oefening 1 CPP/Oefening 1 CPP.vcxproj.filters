@@ -72,14 +72,4 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Oefening 1 CPP.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="font1.bin">
-      <Filter>Resource Files</Filter>
-    </None>
-  </ItemGroup>
 </Project>

@@ -1,5 +1,5 @@
 #include "Text.h"
-#include "Windows.h"
+sf::Font Text::defaultFont;
 
 void Text::Draw(sf::RenderWindow& window)
 {
@@ -15,23 +15,21 @@ void Text::SetColor(sf::Color color)
 {
 	textObj.setFillColor(color);
 }
-void Text::LoadFont()
+
+void Text::SetText(sf::String text)
 {
-	sf::Font font;
+	this->text = text;
+	textObj.setString(text);
+}
 
-	std::string fontPath = GetExecutablePath() + "\\arial.ttf";
-	if (!font.loadFromFile(fontPath))
+void Text::LoadDefaultFont(const std::string& fontPath)
+{
+	if (!defaultFont.loadFromFile(fontPath))
 	{
-
+		std::cerr << "Failed to load default font from " << fontPath << std::endl;
 	}
 }
-std::string Text::GetExecutablePath()
-{
-	char buffer[MAX_PATH];
-	GetModuleFileNameA(NULL, buffer, MAX_PATH);
-	std::string::size_type pos = std::string(buffer).find_last_of("\\/");
-	return std::string(buffer).substr(0, pos);
-}
+
 //
 //Text::Text(float x, float y, sf::Color color, sf::String text) : Shape(x, y, color)
 //{

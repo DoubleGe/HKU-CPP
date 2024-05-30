@@ -154,12 +154,6 @@
     <ClInclude Include="Text.h" />
     <ClInclude Include="Vector2.h" />
   </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Oefening 1 CPP.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="font1.bin" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

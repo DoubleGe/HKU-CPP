@@ -2,36 +2,45 @@
 #include "Shape.h"
 #include <SFML/Graphics.hpp>
 #include "iostream"
+//#include "Game.h"
 
 class Text : public Shape
 {
 private:
 	sf::Text textObj;
-	sf::Font font;
+	sf::String text;
+	//sf::Font& font;
+
+	static sf::Font defaultFont;
 
 public:
 	void Draw(sf::RenderWindow& window);
 	void SetPosition(Vector2 position);
 	void SetColor(sf::Color color);
+	void SetText(sf::String text);
 
-	Text(float x, float y, sf::Color color, sf::String text) : Shape(x, y, color)
+	Text(Vector2 position, sf::Color color, sf::String text) : Shape(position.x, position.y, color)
 	{
 		textObj = sf::Text();
+
+		this->text = text;
 		textObj.setString(text);
 		textObj.setCharacterSize(24);
+
 		SetColor(color);
-		LoadFont();
-		textObj.setFont(font);
-		SetPosition(Vector2(x, y));
+		textObj.setFont(defaultFont);
+		SetPosition(position);
 	};
 
 	Text() : Shape(0, 0, sf::Color(0, 0, 0, 255)) {
 		textObj = sf::Text();
-		textObj.setString("");
+
+		text = "";
+		textObj.setString(text);
+		textObj.setCharacterSize(24);
+		textObj.setFont(defaultFont);
 		SetPosition(Vector2(0, 0));
 	}
 
-	void LoadFont();
-
-	std::string GetExecutablePath();
+	static void LoadDefaultFont(const std::string& fontPath);
 };

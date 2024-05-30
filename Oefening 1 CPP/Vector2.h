@@ -13,7 +13,7 @@ public:
 	Vector2 UnitVector();
 	float DotProduct(Vector2 vec);
 	float NormalizedDotProduct(Vector2 vec);
-	sf::Vector2<float> ConvertToSFML();
+	sf::Vector2f ConvertToSFML();
 
 	Vector2() : x(0), y(0) {};
 	Vector2(float x, float y) : x(x), y(y) {};
