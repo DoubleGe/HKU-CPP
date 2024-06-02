@@ -6,8 +6,8 @@ namespace SR {
 	{
 	private:
 		sf::RectangleShape rectangle;
-		Vector2 size;
 	public:
+		Vector2 size;
 		void SetPosition(Vector2 position);
 
 		void Draw(sf::RenderWindow& window);

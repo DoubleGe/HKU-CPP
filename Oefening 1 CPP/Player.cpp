@@ -9,7 +9,7 @@ void Player::Update()
 
 void Player::Draw(sf::RenderWindow& window)
 {
-	playerShape->Draw(window);
+	playerShape.Draw(window);
 }
 
 void Player::Input()
@@ -43,17 +43,17 @@ void Player::CalculatePhysics()
 	//std::cout << velocity << std::endl;
 
 	position += velocity * game.deltaTime;
-	playerShape->SetPosition(position);
+	playerShape.SetPosition(position);
 }
 
 Player::Player(Vector2 position, Game& game) : game(game)
 {
 	this->position = position;
 	
-	playerShape = new SR::Rectangle(position.x, position.y, sf::Color(43, 196, 0, 255), Vector2(40, 70));
+	playerShape = SR::Rectangle(position.x, position.y, sf::Color(43, 196, 0, 255), Vector2(40, 70));
 }
 
-Player::~Player()
-{
-	delete playerShape;
-}
+//Player::~Player()
+//{
+	//delete playerShape;
+//}

@@ -18,8 +18,9 @@ Game::Game(sf::RenderWindow& rw) : window(rw)
 	
 	//objectsToDraw.push_back(fpsText);
 
-	gameObjects.push_back(new Player(Vector2(40, window.getSize().y - 80), *this));
-	gameObjects.push_back(new CarSpawner(*this));
+	Player* player = new Player(Vector2(40, window.getSize().y - 80), *this);
+	gameObjects.push_back(player);
+	gameObjects.push_back(new CarSpawner(*this, player));
 }
 
 Game::~Game()

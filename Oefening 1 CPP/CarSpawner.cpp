@@ -24,7 +24,7 @@ void CarSpawner::Update()
 }
 
 
-CarSpawner::CarSpawner(Game& game) : game(game)
+CarSpawner::CarSpawner(Game& game, Player* player) : game(game), player(player)
 {
 	scoreText = Text(Vector2(10, 10), sf::Color(0, 0, 0, 255), "Score: 0");
 	currentSpawnTimer = 0;
@@ -66,5 +66,21 @@ void CarSpawner::ChangeScore(int score)
 {
 	currentScore += score;
 	scoreText.SetText("Score: " + std::to_string(currentScore));
+}
+
+void CarSpawner::CheckCollision()
+{
+	for (auto i : cars) {
+		CheckCollision(i->rect, player->playerShape);
+	}
+}
+
+bool CarSpawner::CheckCollision(const SR::Rectangle& rect1, const SR::Rectangle& rect2)
+{
+	bool xOverlap = rect1.position.x < rect2.position.x + rect2.size.x && rect1.position.x + rect1.size.x > rect2.position.x;
+
+	bool yOverlap = rect1.position.y < rect2.position.y + rect2.size.y && rect1.position.y + rect1.size.y > rect2.position.y;
+
+	return xOverlap && yOverlap;
 }
 

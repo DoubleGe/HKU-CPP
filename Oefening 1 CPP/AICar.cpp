@@ -7,7 +7,7 @@ void AICar::MoveCar()
 
 	position.y += initVelocity * lifeTime + 0.5 * acceleration * (lifeTime * lifeTime);
 
-	rectangle.SetPosition(position);
+	rect.SetPosition(position);
 }
 
 void AICar::Update()
@@ -17,7 +17,7 @@ void AICar::Update()
 
 void AICar::Draw(sf::RenderWindow& window)
 {
-	rectangle.Draw(window);
+	rect.Draw(window);
 }
 
 AICar::AICar(Game& game) : game(game)
@@ -27,5 +27,5 @@ AICar::AICar(Game& game) : game(game)
 	lifeTime = 0;
 
 	position = Vector2(std::rand() % game.window.getSize().x, -60);
-	rectangle = SR::Rectangle(position.x, position.y, sf::Color(255, 0, 0, 255), Vector2(40, 70));
+	rect = SR::Rectangle(position.x, position.y, sf::Color(255, 0, 0, 255), Vector2(40, 70));
 }

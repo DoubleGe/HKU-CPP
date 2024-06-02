@@ -7,7 +7,6 @@ class AICar : public GameObject
 {
 private:
 	Game& game;
-	SR::Rectangle rectangle;
 
 	float initVelocity = 0;
 	float acceleration = 1;
@@ -19,6 +18,7 @@ private:
 	void MoveCar();
 public:
 	Vector2 position;
+	SR::Rectangle rect;
 
 	void Update();
 	void Draw(sf::RenderWindow& window);
