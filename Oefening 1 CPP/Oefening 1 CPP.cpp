@@ -22,7 +22,7 @@ int main()
 				window.close();
 		}
 
-		window.clear();
+		window.clear(sf::Color(122, 122, 122, 255));
 		game.Update();
 		window.display();
 	}

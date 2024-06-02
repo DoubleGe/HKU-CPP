@@ -1,17 +1,10 @@
 #include "Player.h"
+#include "iostream"
 
 void Player::Update()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		position.y -= 100 * game.deltaTime;
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		position.y += 100 * game.deltaTime;
-	}
-
-	playerShape->SetSize(playerShape->GetSize() + Vector2(1, 1) * game.deltaTime);
-
-	playerShape->SetPosition(position);
+	Input();
+	CalculatePhysics();
 }
 
 void Player::Draw(sf::RenderWindow& window)
@@ -19,11 +12,45 @@ void Player::Draw(sf::RenderWindow& window)
 	playerShape->Draw(window);
 }
 
+void Player::Input()
+{
+	userInput = Vector2(0, 0);
+	
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+		userInput.x = -200;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+		userInput.x = 200;
+	}
+}
+
+void Player::CalculatePhysics()
+{
+	float fn = weight * game.gravity;
+	float ff = friction * fn;
+	
+	Vector2 frictionAcceleration;
+	frictionAcceleration.x = -ff / weight * (velocity.x / std::max(1.0f, std::abs(velocity.x)));
+	frictionAcceleration.y = -ff / weight * (velocity.y / std::max(1.0f, std::abs(velocity.y)));
+	
+	acceleration = (userInput - userInput * (friction * friction)) + frictionAcceleration;
+
+	velocity += acceleration * game.deltaTime;
+	
+	if (velocity.x > -.1f && velocity.x < .1f) velocity.x = 0;
+	if (velocity.y > -.1f && velocity.y < .1f) velocity.y = 0;
+
+	//std::cout << velocity << std::endl;
+
+	position += velocity * game.deltaTime;
+	playerShape->SetPosition(position);
+}
+
 Player::Player(Vector2 position, Game& game) : game(game)
 {
 	this->position = position;
 	
-	playerShape = new SR::Rectangle(position.x, position.y, sf::Color(255, 0, 0, 255), Vector2(10, 10));
+	playerShape = new SR::Rectangle(position.x, position.y, sf::Color(255, 0, 0, 255), Vector2(30, 60));
 }
 
 Player::~Player()

@@ -18,12 +18,14 @@ private:
 	std::list<GameObject*> gameObjects;
 
 	//sf::Font gameFont;
-	Text fpsText;
+	Text* fpsText;
 
 	int fps = 0;
 	void LoadFont();
 public:
 	sf::RenderWindow& window;
+
+	const float gravity = 9.81f;
 
 	float deltaTime = 0;
 	void Update();

@@ -10,17 +10,14 @@ Game::Game(sf::RenderWindow& rw) : window(rw)
 	Text::LoadDefaultFont(GetExecutablePath() + "/arial.ttf");
 	//LoadFont();
 
-	objectsToDraw.push_back(new Circle(250, 250, sf::Color(150, 200, 100, 255), 20));
-	objectsToDraw.push_back(new SR::Rectangle(500, 500, sf::Color(150, 200, 200, 255), Vector2(200, 200)));
+	//objectsToDraw.push_back(new Circle(250, 250, sf::Color(150, 200, 100, 255), 20));
+	//objectsToDraw.push_back(new SR::Rectangle(500, 500, sf::Color(150, 200, 200, 255), Vector2(200, 200)));
 
-	Vector2 vec = Vector2(1, -2);
-	//std::cout << vec.GetLength() << std::endl;
-	//std::cout << vec.Normalized() << std::endl;
-	//std::cout << vec.ConvertToSFML().y;
-
-	fpsText = Text(Vector2(50, 50), sf::Color(0, 255, 0, 255), sf::String("Brrr"));
+	fpsText = new Text(Vector2(10, 10), sf::Color(0, 255, 0, 255), sf::String("Brrr"));
 	
-	gameObjects.push_back(new Player(Vector2(40, 10), *this));
+	objectsToDraw.push_back(fpsText);
+
+	gameObjects.push_back(new Player(Vector2(40, window.getSize().y - 80), *this));
 }
 
 Game::~Game()
@@ -52,15 +49,12 @@ void Game::Update()
 		i->LateUpdate();
 	}
 
-	fpsText.SetText(sf::String("FPS: " + std::to_string(fps)));
-	fpsText.Draw(window);
+	fpsText->SetText(sf::String("FPS: " + std::to_string(fps)));
 
 	currentTime = clock.getElapsedTime();
 	deltaTime = (currentTime.asSeconds() - previousTime.asSeconds());
-	fps = 1.0f / deltaTime; // the asSeconds returns a float
-	//std::cout << "fps = " << floor(fps) << std::endl; // flooring it will make the frame rate a rounded number
+	fps = 1.0f / deltaTime; 
 	previousTime = currentTime;
-
 }
 
 //Creates string out of Vector2.
