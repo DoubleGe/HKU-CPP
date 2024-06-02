@@ -133,6 +133,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AICar.cpp" />
+    <ClCompile Include="CarSpawner.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -144,6 +146,8 @@
     <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AICar.h" />
+    <ClInclude Include="CarSpawner.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />

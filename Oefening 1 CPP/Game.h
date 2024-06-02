@@ -18,7 +18,7 @@ private:
 	std::list<GameObject*> gameObjects;
 
 	//sf::Font gameFont;
-	Text* fpsText;
+	//Text* fpsText;
 
 	int fps = 0;
 	void LoadFont();

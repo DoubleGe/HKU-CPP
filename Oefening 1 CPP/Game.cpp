@@ -4,6 +4,7 @@
 #include "Vector2.h"
 #include "Player.h"
 #include "Windows.h"
+#include "CarSpawner.h"
 
 Game::Game(sf::RenderWindow& rw) : window(rw)
 {
@@ -13,11 +14,12 @@ Game::Game(sf::RenderWindow& rw) : window(rw)
 	//objectsToDraw.push_back(new Circle(250, 250, sf::Color(150, 200, 100, 255), 20));
 	//objectsToDraw.push_back(new SR::Rectangle(500, 500, sf::Color(150, 200, 200, 255), Vector2(200, 200)));
 
-	fpsText = new Text(Vector2(10, 10), sf::Color(0, 255, 0, 255), sf::String("Brrr"));
+	//fpsText = new Text(Vector2(10, 10), sf::Color(0, 255, 0, 255), sf::String("Brrr"));
 	
-	objectsToDraw.push_back(fpsText);
+	//objectsToDraw.push_back(fpsText);
 
 	gameObjects.push_back(new Player(Vector2(40, window.getSize().y - 80), *this));
+	gameObjects.push_back(new CarSpawner(*this));
 }
 
 Game::~Game()
@@ -49,7 +51,7 @@ void Game::Update()
 		i->LateUpdate();
 	}
 
-	fpsText->SetText(sf::String("FPS: " + std::to_string(fps)));
+	//fpsText->SetText(sf::String("FPS: " + std::to_string(fps)));
 
 	currentTime = clock.getElapsedTime();
 	deltaTime = (currentTime.asSeconds() - previousTime.asSeconds());
