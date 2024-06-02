@@ -9,13 +9,11 @@
 Game::Game(sf::RenderWindow& rw) : window(rw)
 {
 	Text::LoadDefaultFont(GetExecutablePath() + "/arial.ttf");
-	//LoadFont();
 
 	//objectsToDraw.push_back(new Circle(250, 250, sf::Color(150, 200, 100, 255), 20));
 	//objectsToDraw.push_back(new SR::Rectangle(500, 500, sf::Color(150, 200, 200, 255), Vector2(200, 200)));
 
 	//fpsText = new Text(Vector2(10, 10), sf::Color(0, 255, 0, 255), sf::String("Brrr"));
-	
 	//objectsToDraw.push_back(fpsText);
 
 	Player* player = new Player(Vector2(40, window.getSize().y - 80), *this);
@@ -60,20 +58,14 @@ void Game::Update()
 	previousTime = currentTime;
 }
 
+void Game::SetGameOver()
+{
+	gameOver = true;
+}
+
 //Creates string out of Vector2.
 std::ostream& operator<<(std::ostream& strm, const Vector2& a) {
 	return strm << "(" << a.x << "," << a.y << ")";
-}
-
-void Game::LoadFont()
-{
-	sf::Font font;
-
-	std::string fontPath = GetExecutablePath() + "/arial.ttf";
-	if (!font.loadFromFile(fontPath))
-	{
-		std::cout << "Font not found: " << fontPath << std::endl;
-	}
 }
 
 std::string Game::GetExecutablePath()

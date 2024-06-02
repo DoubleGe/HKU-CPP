@@ -3,6 +3,7 @@
 
 void Player::Update()
 {
+	if (game.gameOver) return;
 	Input();
 	CalculatePhysics();
 }

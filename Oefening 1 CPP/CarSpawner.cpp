@@ -14,12 +14,14 @@ void CarSpawner::SpawnCar()
 
 void CarSpawner::Update()
 {
+	if (game.gameOver) return;
 	SpawnCar();
 
 	for (auto i : cars) {
 		i->Update();
 	}
 
+	CheckCollision();
 	CheckForOutOfScreen();
 }
 
@@ -71,7 +73,9 @@ void CarSpawner::ChangeScore(int score)
 void CarSpawner::CheckCollision()
 {
 	for (auto i : cars) {
-		CheckCollision(i->rect, player->playerShape);
+		bool collision = CheckCollision(i->rect, player->playerShape);
+
+		if (collision) game.SetGameOver();
 	}
 }
 

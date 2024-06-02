@@ -21,14 +21,15 @@ private:
 	//Text* fpsText;
 
 	int fps = 0;
-	void LoadFont();
 public:
 	sf::RenderWindow& window;
 
+	bool gameOver;
 	const float gravity = 9.81f;
 
 	float deltaTime = 0;
 	void Update();
+	void SetGameOver();
 	Game(sf::RenderWindow& window);
 	~Game(); 
 

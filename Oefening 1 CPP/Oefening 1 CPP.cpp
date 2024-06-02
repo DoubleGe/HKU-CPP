@@ -8,7 +8,7 @@
 int main()
 {
 	//RenderWindow window = RenderWindow(VideoMode(200, 200), "SFML works!");
-	sf::RenderWindow window(sf::VideoMode(700, 700), "Shape Drawer!");
+	sf::RenderWindow window(sf::VideoMode(700, 800), "Speed Racer!");
 
 	Game game(window);
 	window.setFramerateLimit(275);
