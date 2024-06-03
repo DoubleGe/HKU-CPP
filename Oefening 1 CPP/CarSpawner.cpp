@@ -73,17 +73,17 @@ void CarSpawner::ChangeScore(int score)
 void CarSpawner::CheckCollision()
 {
 	for (auto i : cars) {
-		bool collision = CheckCollision(i->rect, player->playerShape);
+		bool collision = CheckCollision(i->rect, player->playerVisual);
 
 		if (collision) game.SetGameOver();
 	}
 }
 
-bool CarSpawner::CheckCollision(const SR::Rectangle& rect1, const SR::Rectangle& rect2)
+bool CarSpawner::CheckCollision(const SR::Rectangle& rect1, const Texture* rect2)
 {
-	bool xOverlap = rect1.position.x < rect2.position.x + rect2.size.x && rect1.position.x + rect1.size.x > rect2.position.x;
+	bool xOverlap = rect1.position.x < rect2->position.x + rect2->size.x && rect1.position.x + rect1.size.x > rect2->position.x;
 
-	bool yOverlap = rect1.position.y < rect2.position.y + rect2.size.y && rect1.position.y + rect1.size.y > rect2.position.y;
+	bool yOverlap = rect1.position.y < rect2->position.y + rect2->size.y && rect1.position.y + rect1.size.y > rect2->position.y;
 
 	return xOverlap && yOverlap;
 }

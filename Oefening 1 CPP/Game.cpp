@@ -19,7 +19,8 @@ Game::Game(sf::RenderWindow& rw) : window(rw)
 	Texture* testTexture = new Texture(GetExecutablePath() + "/RoadSprite.png");
 	objectsToDraw.push_back(testTexture);
 
-	Player* player = new Player(Vector2(40, window.getSize().y - 80), *this);
+	sf::String playerPath = GetExecutablePath() + "/PlayerCar.png";
+	Player* player = new Player(Vector2(40, window.getSize().y - 100), playerPath, *this);
 	gameObjects.push_back(player);
 	gameObjects.push_back(new CarSpawner(*this, player));
 }

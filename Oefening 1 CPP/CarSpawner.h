@@ -23,7 +23,7 @@ private:
 	void CheckForOutOfScreen();
 	void ChangeScore(int score);
 	void CheckCollision();
-	bool CheckCollision(const SR::Rectangle& rect1, const SR::Rectangle& rect2);
+	bool CheckCollision(const SR::Rectangle& rect1, const Texture* rect2);
 public:
 	void Update();
 	void Draw(sf::RenderWindow& window);

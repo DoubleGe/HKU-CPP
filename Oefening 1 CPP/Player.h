@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "GameObject.h"
 #include "Vector2.h"
-#include "Rectangle.h"
+#include "Texture.h"
 #include "Game.h"
 
 class Player : public GameObject
@@ -22,10 +22,10 @@ private:
 	void CalculatePhysics();
 public:
 	Vector2 position;
-	SR::Rectangle playerShape;
+	Texture* playerVisual;
 
-	Player(Vector2 position, Game& game);
-	//virtual ~Player();
+	Player(Vector2 position, sf::String spritePath, Game& game);
+	virtual ~Player();
 
 	void Update();
 	void Draw(sf::RenderWindow& window);
