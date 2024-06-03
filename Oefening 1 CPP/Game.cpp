@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Windows.h"
 #include "CarSpawner.h"
+#include "Texture.h"
 
 Game::Game(sf::RenderWindow& rw) : window(rw)
 {
@@ -15,6 +16,8 @@ Game::Game(sf::RenderWindow& rw) : window(rw)
 
 	//fpsText = new Text(Vector2(10, 10), sf::Color(0, 255, 0, 255), sf::String("Brrr"));
 	//objectsToDraw.push_back(fpsText);
+	Texture* testTexture = new Texture(GetExecutablePath() + "/RoadSprite.png");
+	objectsToDraw.push_back(testTexture);
 
 	Player* player = new Player(Vector2(40, window.getSize().y - 80), *this);
 	gameObjects.push_back(player);
