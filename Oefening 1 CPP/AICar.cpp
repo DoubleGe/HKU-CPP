@@ -7,7 +7,7 @@ void AICar::MoveCar()
 
 	position.y += initVelocity * lifeTime + 0.5 * acceleration * (lifeTime * lifeTime);
 
-	rect.SetPosition(position);
+	aiCarTexture->SetPosition(position);
 }
 
 void AICar::Update()
@@ -17,15 +17,19 @@ void AICar::Update()
 
 void AICar::Draw(sf::RenderWindow& window)
 {
-	rect.Draw(window);
+	aiCarTexture->Draw(window);
 }
 
-AICar::AICar(Game& game) : game(game)
+AICar::AICar(Game& game, sf::String spriteToUse) : game(game)
 {
 	acceleration = 1;
 	initVelocity = 0;
 	lifeTime = 0;
 
 	position = Vector2(std::rand() % game.window.getSize().x - 60, -60);
-	rect = SR::Rectangle(position.x, position.y, sf::Color(255, 0, 0, 255), Vector2(40, 70));
+
+	//Loads new sprite because textures need to be a * otherwise the game won't render them.
+	//Tried it with sprites form the spawner, but you can't only draw a sprite it also contains the position.
+	aiCarTexture = new Texture(spriteToUse);
+	aiCarTexture->SetSize(Vector2(52, 75));
 }

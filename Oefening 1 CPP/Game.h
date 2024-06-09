@@ -17,9 +17,6 @@ private:
 	std::vector<Shape*> objectsToDraw;
 	std::list<GameObject*> gameObjects;
 
-	//sf::Font gameFont;
-	//Text* fpsText;
-
 	int fps = 0;
 public:
 	sf::RenderWindow& window;

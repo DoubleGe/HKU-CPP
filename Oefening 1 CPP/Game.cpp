@@ -7,24 +7,24 @@
 #include "CarSpawner.h"
 #include "Texture.h"
 
+//Create the game handler.
 Game::Game(sf::RenderWindow& rw) : window(rw)
 {
 	Text::LoadDefaultFont(GetExecutablePath() + "/arial.ttf");
 
-	//objectsToDraw.push_back(new Circle(250, 250, sf::Color(150, 200, 100, 255), 20));
-	//objectsToDraw.push_back(new SR::Rectangle(500, 500, sf::Color(150, 200, 200, 255), Vector2(200, 200)));
-
-	//fpsText = new Text(Vector2(10, 10), sf::Color(0, 255, 0, 255), sf::String("Brrr"));
-	//objectsToDraw.push_back(fpsText);
 	Texture* testTexture = new Texture(GetExecutablePath() + "/RoadSprite.png");
 	objectsToDraw.push_back(testTexture);
 
 	sf::String playerPath = GetExecutablePath() + "/PlayerCar.png";
 	Player* player = new Player(Vector2(40, window.getSize().y - 100), playerPath, *this);
 	gameObjects.push_back(player);
-	gameObjects.push_back(new CarSpawner(*this, player));
+
+	CarSpawner* carSpawner = new CarSpawner(*this, player);
+	carSpawner->LoadCarSprites(GetExecutablePath());
+	gameObjects.push_back(carSpawner);
 }
 
+//Removes all the *.
 Game::~Game()
 {
 	for (auto i : objectsToDraw) {
@@ -38,30 +38,34 @@ Game::~Game()
 
 void Game::Update()
 {
+	//Draws the "static" objects.
 	for (auto i : objectsToDraw) {
 		i->Draw(window);
 	}
 
+	//Updates the GameObjects
 	for (auto i : gameObjects) {
 		i->Update();
 	}
 
-	for (auto i : gameObjects) {
-		i->Draw(window);
-	}
-
+	//Late update for GameObjects
 	for (auto i : gameObjects) {
 		i->LateUpdate();
 	}
 
-	//fpsText->SetText(sf::String("FPS: " + std::to_string(fps)));
+	//Draw for the GameObjects
+	for (auto i : gameObjects) {
+		i->Draw(window);
+	}
 
+	//Calculate the deltaTime & framerate.
 	currentTime = clock.getElapsedTime();
 	deltaTime = (currentTime.asSeconds() - previousTime.asSeconds());
 	fps = 1.0f / deltaTime; 
 	previousTime = currentTime;
 }
 
+//Sets the state of the game to GameOver
 void Game::SetGameOver()
 {
 	gameOver = true;
@@ -78,6 +82,7 @@ std::ostream& operator<<(std::ostream& strm, const Vector2& a) {
 	return strm << "(" << a.x << "," << a.y << ")";
 }
 
+//Gets the path the application is executed in.
 std::string Game::GetExecutablePath()
 {
 	char buffer[MAX_PATH];

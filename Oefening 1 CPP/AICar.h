@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "Game.h"
 #include "Rectangle.h"
+#include "Texture.h"
 
 class AICar : public GameObject
 {
@@ -18,11 +19,12 @@ private:
 	void MoveCar();
 public:
 	Vector2 position;
-	SR::Rectangle rect;
+	//SR::Rectangle rect;
+	Texture* aiCarTexture;
 
 	void Update();
 	void Draw(sf::RenderWindow& window);
 
-	AICar(Game& game);
+	AICar(Game& game, sf::String spriteToUse);
 };
 

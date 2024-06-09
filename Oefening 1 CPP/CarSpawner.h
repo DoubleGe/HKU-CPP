@@ -10,6 +10,8 @@ class CarSpawner : public GameObject
 {
 private:
 	std::list<AICar*> cars;
+	std::vector<sf::String> carTextures;
+
 	Game& game;
 	Player* player;
 
@@ -25,10 +27,11 @@ private:
 	void CheckForOutOfScreen();
 	void ChangeScore(int score);
 	void CheckCollision();
-	bool CheckCollision(const SR::Rectangle& rect1, const Texture* rect2);
+	bool CheckCollision(const Texture* rect1, const Texture* rect2);
 public:
 	void Update();
 	void Draw(sf::RenderWindow& window);
+	void LoadCarSprites(sf::String basePath);
 
 	CarSpawner(Game& game, Player* player);
 	virtual ~CarSpawner();
