@@ -14,8 +14,6 @@ private:
 	float weight = 100;
 	Vector2 userInput = Vector2(0,0);
 
-
-	float playerSpeed = 5;
 	Game& game;
 
 	void Input();

@@ -18,8 +18,10 @@ private:
 
 	float currentSpawnTimer;
 	float timeBetweenSpawn;
-	
+	int spawnCount = 1;
+
 	void SpawnCar();
+	void ChangeSpawning();
 	void CheckForOutOfScreen();
 	void ChangeScore(int score);
 	void CheckCollision();

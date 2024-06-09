@@ -18,6 +18,8 @@ public:
 	void SetPosition(Vector2 position);
 	void SetColor(sf::Color color);
 	void SetText(sf::String text);
+	void SetBold(bool bold);
+	void SetSize(int size);
 
 	Text(Vector2 position, sf::Color color, sf::String text) : Shape(position.x, position.y, color)
 	{

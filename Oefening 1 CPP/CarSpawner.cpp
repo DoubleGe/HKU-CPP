@@ -6,9 +6,44 @@ void CarSpawner::SpawnCar()
 {
 	currentSpawnTimer += game.deltaTime;
 
+
 	if (currentSpawnTimer >= timeBetweenSpawn) {
-		cars.push_back(new AICar(game));
-		currentSpawnTimer = 0;
+		for (size_t i = 0; i < spawnCount; i++)
+		{
+			cars.push_back(new AICar(game));
+			currentSpawnTimer = 0;
+		}
+	}
+}
+
+//Sets the spawning speed + ammount.
+void CarSpawner::ChangeSpawning()
+{
+	switch (currentScore) {
+	case 5:
+		timeBetweenSpawn -= .25f;
+		break;
+	case 10:
+		spawnCount++;
+		break;
+	case 15:
+		timeBetweenSpawn -= .25f;
+		break;
+	case 30:
+		spawnCount++;
+		break;
+	case 50:
+		timeBetweenSpawn -= .25f;
+		break;
+	case 75:
+		spawnCount++;
+		break;
+	case 130:
+		timeBetweenSpawn -= .25f;
+		break;
+	case 160:
+		spawnCount++;
+		break;
 	}
 }
 
@@ -68,6 +103,7 @@ void CarSpawner::ChangeScore(int score)
 {
 	currentScore += score;
 	scoreText.SetText("Score: " + std::to_string(currentScore));
+	ChangeSpawning();
 }
 
 void CarSpawner::CheckCollision()

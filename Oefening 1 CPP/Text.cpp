@@ -22,6 +22,17 @@ void Text::SetText(sf::String text)
 	textObj.setString(text);
 }
 
+void Text::SetBold(bool bold)
+{
+	if (bold) textObj.setStyle(sf::Text::Bold);
+	else textObj.setStyle(0);
+}
+
+void Text::SetSize(int size)
+{
+	textObj.setCharacterSize(size);
+}
+
 void Text::LoadDefaultFont(const std::string& fontPath)
 {
 	if (!defaultFont.loadFromFile(fontPath))

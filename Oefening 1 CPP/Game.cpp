@@ -65,6 +65,12 @@ void Game::Update()
 void Game::SetGameOver()
 {
 	gameOver = true;
+
+	Vector2 textPos = Vector2(window.getSize().x * .5f - 155, window.getSize().y * .5f - 50);
+	Text* gameOverText = new Text(textPos, sf::Color(255, 0, 0, 255), "GAME OVER");
+	gameOverText->SetBold(true);
+	gameOverText->SetSize(50);
+	objectsToDraw.push_back(gameOverText);
 }
 
 //Creates string out of Vector2.

@@ -41,6 +41,11 @@ public:
 		y += vecToAdd.y;
 	}
 
+	void operator-= (const Vector2& vecToAdd) {
+		x -= vecToAdd.x;
+		y -= vecToAdd.y;
+	}
+
 	friend std::ostream& operator<<(std::ostream& strm, const Vector2& a);
 };
 
