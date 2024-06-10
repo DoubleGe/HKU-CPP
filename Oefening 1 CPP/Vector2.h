@@ -10,7 +10,6 @@ public:
 	
 	Vector2 Normalized();
 	float GetLength();
-	Vector2 UnitVector();
 	float DotProduct(Vector2 vec);
 	float NormalizedDotProduct(Vector2 vec);
 	sf::Vector2f ConvertToSFML();
