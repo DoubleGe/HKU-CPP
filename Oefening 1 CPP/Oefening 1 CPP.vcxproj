@@ -24,6 +24,7 @@
     <ProjectGuid>{819fec0b-7394-4156-a018-a8af9c34ee5c}</ProjectGuid>
     <RootNamespace>Oefening1CPP</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>GhostRider</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

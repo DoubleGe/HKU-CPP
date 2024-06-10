@@ -12,10 +12,10 @@ Game::Game(sf::RenderWindow& rw) : window(rw)
 {
 	Text::LoadDefaultFont(GetExecutablePath() + "/arial.ttf");
 
-	Texture* testTexture = new Texture(GetExecutablePath() + "/RoadSprite.png");
+	Texture* testTexture = new Texture(GetExecutablePath() + "/Sprites/RoadSprite.png");
 	objectsToDraw.push_back(testTexture);
 
-	sf::String playerPath = GetExecutablePath() + "/PlayerCar.png";
+	sf::String playerPath = GetExecutablePath() + "/Sprites/PlayerCar.png";
 	Player* player = new Player(Vector2(40, window.getSize().y - 100), playerPath, *this);
 	gameObjects.push_back(player);
 
