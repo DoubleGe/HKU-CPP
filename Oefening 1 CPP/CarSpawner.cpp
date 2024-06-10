@@ -94,7 +94,7 @@ void CarSpawner::LoadCarSprites(sf::String basePath)
 	carTextures.push_back(sf::String(basePath + sf::String("/Sprites/Cars/YellowCar.png")));
 }
 
-//Checks for Out of screen and deletes if.
+//Checks for Out of screen and deletes it.
 void CarSpawner::CheckForOutOfScreen()
 {
 	auto it = cars.begin();
