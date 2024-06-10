@@ -47,5 +47,11 @@ public:
 	}
 
 	friend std::ostream& operator<<(std::ostream& strm, const Vector2& a);
+
+	// Static constants for direction vectors
+	static const Vector2 UP;
+	static const Vector2 DOWN;
+	static const Vector2 LEFT;
+	static const Vector2 RIGHT;
 };
 

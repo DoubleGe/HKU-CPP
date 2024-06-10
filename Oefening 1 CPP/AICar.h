@@ -26,5 +26,6 @@ public:
 	void Draw(sf::RenderWindow& window);
 
 	AICar(Game& game, sf::String spriteToUse);
+	~AICar();
 };
 

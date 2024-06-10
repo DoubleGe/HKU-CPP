@@ -1,6 +1,7 @@
 #include "AICar.h"
 #include "iostream"
 
+//Moves the car with a constant accelaration.
 void AICar::MoveCar()
 {
 	lifeTime += game.deltaTime;
@@ -15,11 +16,13 @@ void AICar::Update()
 	MoveCar();
 }
 
+//Draws the AI Car.
 void AICar::Draw(sf::RenderWindow& window)
 {
 	aiCarTexture->Draw(window);
 }
 
+//Creates the AICar
 AICar::AICar(Game& game, sf::String spriteToUse) : game(game)
 {
 	acceleration = 1;
@@ -32,4 +35,9 @@ AICar::AICar(Game& game, sf::String spriteToUse) : game(game)
 	//Tried it with sprites form the spawner, but you can't only draw a sprite it also contains the position.
 	aiCarTexture = new Texture(spriteToUse);
 	aiCarTexture->SetSize(Vector2(52, 75));
+}
+
+AICar::~AICar()
+{
+	delete aiCarTexture;
 }

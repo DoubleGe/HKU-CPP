@@ -16,23 +16,27 @@ void Text::SetColor(sf::Color color)
 	textObj.setFillColor(color);
 }
 
+//Set the text content.
 void Text::SetText(sf::String text)
 {
 	this->text = text;
 	textObj.setString(text);
 }
 
+//Set Text bold
 void Text::SetBold(bool bold)
 {
 	if (bold) textObj.setStyle(sf::Text::Bold);
 	else textObj.setStyle(0);
 }
 
+//Set Text Size.
 void Text::SetSize(int size)
 {
 	textObj.setCharacterSize(size);
 }
 
+//Loads the default 
 void Text::LoadDefaultFont(const std::string& fontPath)
 {
 	if (!defaultFont.loadFromFile(fontPath))
@@ -40,11 +44,3 @@ void Text::LoadDefaultFont(const std::string& fontPath)
 		std::cerr << "Failed to load default font from " << fontPath << std::endl;
 	}
 }
-
-//
-//Text::Text(float x, float y, sf::Color color, sf::String text) : Shape(x, y, color)
-//{
-//	textObj = sf::Text();
-//	textObj.setString(text);
-//	SetPosition(Vector2(x, y));
-//}
